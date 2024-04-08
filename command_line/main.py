@@ -63,9 +63,9 @@ class VendingMachine:
                 if not self.purchase_item(choice, amount_inserted):
                     continue
                 repeat = input("Do want to make another purchase? [Y/n]")
-                if repeat.lower == 'y' or repeat == '':
+                if repeat.lower() == 'y' or repeat == '':
                     continue
-                elif repeat.lower == 'n':
+                elif repeat.lower() == 'n':
                     print("Thank You. Please come again")
                     break
                 
