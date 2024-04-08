@@ -1,0 +1,25 @@
+<table id="user_modal_table" class='table w-25'>
+    <thead>
+      <tr>
+        <th colspan='6'>Total Money : RM {{request.user.userwallet.wallet_sum}}</th>
+      </tr>
+      <tr>
+        <th id="hundred">100</th>
+        <th id="fifty">50</th>
+        <th id="twenty">20</th>
+        <th id="ten">10</th>
+        <th id="five">5</th>
+        <th id="one">1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{request.user.userwallet.hundred}}</td>
+        <td>{{request.user.userwallet.fifty}}</td>
+        <td>{{request.user.userwallet.twenty}}</td>
+        <td>{{request.user.userwallet.ten}}</td>
+        <td>{{request.user.userwallet.five}}</td>
+        <td>{{request.user.userwallet.one}}</td>
+      </tr>
+    </tbody>
+  </table>

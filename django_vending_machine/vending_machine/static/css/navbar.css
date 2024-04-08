@@ -1,0 +1,8 @@
+nav .dropdown-item:hover {
+    background-color: yellow;
+    color: black!important;
+}
+.navbar-nav {
+    width: 100%!important;
+    justify-content: space-between;
+}

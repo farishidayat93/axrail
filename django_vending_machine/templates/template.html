@@ -1,0 +1,130 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+  Vending Machine Test
+{% endblock %}
+
+{% block header_script %}
+<link rel="stylesheet" type="text/css" href="{% static "vending_machine/css/vending_machine.css" %}">
+<script type="text/javascript" src="{% static 'js/ajax_functions.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+  <div id="vending_machine">
+    <div id="vending_machine_header">
+      <p>Coffee/Tea</p>
+      <p>Snack/Candy</p>
+      <p>Canned Drinks</p>
+    </div>
+    <hr class="w-100">
+    <form action="#" method="post">
+      {% csrf_token %}
+      <div id="vending_machine_main">
+        <div id="vending_machine_body">
+          {% for item in vm.items  %}
+          <input id="{{item.category}}-{{item.id}}" class="item" type="radio"  name="item_select" value="{{item.id}}" data-price="{{item.price}}"  data-quantity="{{item.quantity}}"  DISABLED>
+          <label  for="{{item.category}}-{{item.id}}" class="user-select-none">{{item.name}} <p class="m-0">RM {{item.price}}</p></label>
+          {% endfor %}
+        </div>
+        <div id="vending_machine_sidebar">
+          
+          {% comment %} <div id="bill_select">
+            <span>
+              <button onclick="plus(1)"  class="btn btn-sm btn-success">+</button>
+              <p class="my-0">1</p>  
+              <button onclick="minus(1)" class="btn btn-sm btn-warning">-</button>
+            </span>
+            <span>
+              <button onclick="plus(5)"  class="btn btn-sm btn-success">+</button>
+              <p class="my-0">5</p>
+              <button onclick="minus(5)" class="btn btn-sm btn-warning">-</button>
+            </span>
+            <span>
+              <button onclick="plus(10)"  class="btn btn-sm btn-success">+</button>
+              <p class="my-0">10</p>
+              <button onclick="minus(10)" class="btn btn-sm btn-warning">-</button>
+            </span>
+            <span>
+              <button onclick="plus(20)" class="btn btn-sm btn-success">+</button>
+              <p class="my-0">20</p>
+              <button  onclick="minus(20)"  class="btn btn-sm btn-warning">-</button>
+            </span>
+            <span>
+              <button onclick="plus(50)" class="btn btn-sm btn-success">+</button>
+              <p class="my-0">50</p>
+              <button  onclick="minus(50)"  class="btn btn-sm btn-warning">-</button>
+            </span>
+            <span>
+              <button onclick="plus(100)" class="btn btn-sm btn-success">+</button>
+              <p class="my-0">100</p>
+              <button onclick="minus(100)" class="btn btn-sm btn-warning">-</button>
+            </span>
+          </div> {% endcomment %}
+          <div class="d-flex w-100">
+          <label for="cashInput" class="me-2">RM</label>
+          <input id="cashInput" type="number"  name="amount_inserted"  min="0" class="w-100">
+          </div>
+          <input type="hidden" name="category" value="{{vm.category}}">
+          <button class="btn btn-sm btn-warning mt-2 ms-4" type="submit">PAY</button>
+        </div>
+      </div>
+    </form>
+    <hr class="w-100">
+    <div id="vending_machine_footer" class="w-100">
+      <p class="m-0">Instructions :</p>
+      <ol>
+        <li>Insert Cash</li>
+        <li>Select Item</li>
+        <li>Press Pay</li>
+      </ol>
+    </div>
+  </div>
+
+
+</div>  
+<script>
+  const cashInput = document.getElementById('cashInput');
+
+  cashInput.addEventListener('change', function(event) {
+    const insertedCash = event.target.value;
+    comparePrice(insertedCash)
+
+  });
+
+  function plus(val) {
+    const cashValue = Number(cashInput.value)
+    let newValue = cashValue + val;
+    cashInput.value = newValue;
+    comparePrice(newValue)
+  }
+  function minus(val) {
+    const cashValue = Number(cashInput.value)
+    let newValue = cashValue - val;
+    if (newValue >= 0){
+      cashInput.value = newValue;
+      comparePrice(newValue)
+    }
+  }
+
+  function comparePrice(insertedCash) {
+    $('.item').each(function() {
+        let price = $(this).data('price')
+        let label = $("label[for='" + $(this).attr('id') + "']");
+        if (price <= insertedCash) {
+          label.css('background-color', 'lightgreen');
+          $(this).removeAttr('disabled');
+        } else {
+          label.css('background-color', 'lightgray');
+          $(this).attr('disabled','disabled');
+          $(this).prop('checked', false);
+        }
+    });
+}
+
+</script>
+
+
+{% endblock %}

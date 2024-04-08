@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+  PAGE TITLE
+{% endblock %}
+
+{% block header_script %}
+ HEADER SCRIPT
+{% endblock %}
+
+{% block content %}
+
+{{ error|safe }}
+{{ msg }}
+
+{% endblock %}

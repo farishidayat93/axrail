@@ -1,0 +1,113 @@
+#vending_machine{
+    width: fit-content;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto 0;
+    padding: 2%;
+    align-items: center;
+    background-color: powderblue;
+    min-height: 50vh;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+#vending_machine_header{
+    width: 100%;
+    display: flex;
+    font-family: 'Courier New', Courier, monospace;
+    justify-content: space-around;
+    background-color: black;
+    color: yellow;
+    padding: 10px 0;
+}
+#vending_machine_header p{
+    margin: 0;
+}
+#vending_machine_main{
+    display: flex;
+}
+#vending_machine_body{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    align-items: center;
+    width: 80%;
+    padding-right: 1%;
+    
+}
+#vending_machine_sidebar{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding-left: 1%;
+    border-left: 1px solid black;
+}
+#bill_select{
+    display: flex;
+    justify-content: space-evenly;
+}
+#bill_select span{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#vending_machine_body input[type=radio]{
+    position:absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+#vending_machine_body>label{
+    font-size: small;
+    background-color: lightgray;
+    text-align: center;
+    border-radius: 8px;
+    border-width: 0px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#vending_machine_body>label>p{
+    font-size: x-small;
+
+}
+[type=radio]:checked + label{
+    background-color: green!important;
+    color: white;
+}
+ol>li{
+    font-size: smaller;
+}
+#user_modal{
+    left: -200px;
+    padding: 0;
+}
+#user_modal_table{
+    margin-bottom: 0;
+}
+#user_modal_table li{
+    padding: 10px;
+}
+#user_modal_table thead th{
+    min-width: 45px;
+}
+#user_modal li{
+    background-color: lightgray;
+}
+@media (max-width: 600px){
+    #vending_machine_body{
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+    #vending_machine{
+        min-width: fit-content;
+    }
+    #vending_machine_header p{
+        font-size: small;
+    }
+}
