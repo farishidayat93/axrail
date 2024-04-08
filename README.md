@@ -13,7 +13,6 @@ APPROACH
       iv ) revieve item and balance.
     c) Create Logic for getting least amount of changed:
       - used greedy algoritm
-
     d) To be Improved:
       - a way to insert money by notes.
       - persistent data using external file or db.(dictionary is used in this test to show the logic)
