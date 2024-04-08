@@ -1,0 +1,8 @@
+Include
+Lib
+Scripts
+django_vending_machine/django_vending_machine/.env
+django_vending_machine/staticfiles
+__pycache__/
+.env
+django_vending_machine/
