@@ -2,9 +2,11 @@ import yaml
 
 
 INVENTORY = {
-    "1": {"name": "Soda", "price": 3, "quantity": 10},
-    "2": {"name": "Chips", "price": 4, "quantity": 15},
-    "3": {"name": "Candy", "price": 1, "quantity": 20}
+    "1": {"name": "Soda", "price": 4, "quantity": 10},
+    "2": {"name": "Cola", "price": 4, "quantity": 13},
+    "3": {"name": "Lemonade", "price": 5, "quantity": 12},
+    "4": {"name": "Coffee", "price": 8, "quantity": 5},
+    "5": {"name": "Tea", "price": 7, "quantity": 15},
 }
 
 
